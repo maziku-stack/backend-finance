@@ -13,8 +13,8 @@ class TransactionSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Transaction
-        fields = ['id', 'user', 'date', 'description', 'category', 'category_id', 'amount', 'is_income']
-        read_only_fields = ['user']
+        fields = ['id', 'date', 'description', 'category', 'category_id', 'amount', 'is_income']
+        read_only_fields = ['id']
 
     def create(self, validated_data):
         category = validated_data.pop('category')
@@ -24,11 +24,11 @@ class TransactionSerializer(serializers.ModelSerializer):
 class SavingsGoalSerializer(serializers.ModelSerializer):
     class Meta:
         model = SavingsGoal
-        fields = ['id', 'user', 'name', 'target_amount', 'current_amount', 'progress_percent']
-        read_only_fields = ['progress_percent', 'user']
+        fields = ['id', 'name', 'target_amount', 'current_amount', 'progress_percent']
+        read_only_fields = ['progress_percent']
 
 class MonthlySummarySerializer(serializers.ModelSerializer):
     class Meta:
         model = MonthlySummary
-        fields = ['id', 'user', 'month', 'total_income', 'total_expenses', 'amount_saved']
-        read_only_fields = ['user']
+        fields = ['id', 'month', 'total_income', 'total_expenses', 'amount_saved']
+        read_only_fields = ['id']
